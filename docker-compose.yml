@@ -1,0 +1,24 @@
+# docker-compose.yml
+version: "3.8"
+
+services:
+  affine:
+    image: toeverything/affine:latest
+    ports:
+      - "3000:3000"
+
+  chatwoot:
+    image: chatwoot/chatwoot:latest
+    ports:
+      - "3001:3000"
+
+  backend:
+    build: ./backend
+    ports:
+      - "4000:4000"
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3002:80"
