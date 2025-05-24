@@ -1,12 +1,11 @@
-// backend/index.js
-const express = require("express");
+import express from "express";
 const app = express();
 const PORT = 4000;
 
 const tenants = ["acme", "beta"];
 
 app.get("/validate", (req, res) => {
-  const { tenant } = req.query;
+  const tenant = req.query.tenant;
   if (tenants.includes(tenant)) {
     res.json({ valid: true });
   } else {
@@ -15,5 +14,5 @@ app.get("/validate", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Tenant validation server running on port ${PORT}`);
+  console.log(`Tenant validation server running on http://localhost:${PORT}`);
 });
